@@ -411,7 +411,7 @@ export default function RestaurantInfoPage() {
       <header
         style={{
           background: "linear-gradient(135deg, #1d4ed8, #2563eb)",
-          color: "#ff382d",
+          color: "#fff",
           borderRadius: "18px",
           overflow: "hidden",
           marginBottom: "28px",

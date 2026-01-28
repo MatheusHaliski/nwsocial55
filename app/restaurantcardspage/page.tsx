@@ -1,5 +1,5 @@
-import Restaurantcardspage from "../restaurantcardspage";
+import RestaurantCardsPage from "../restaurantcardspage";
 
 export default function RestaurantCardsRoute() {
-  return <Restaurantcardspage />;
+  return <RestaurantCardsPage />;
 }

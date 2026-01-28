@@ -9,7 +9,7 @@ type AuthShellProps = {
 
 export default function AuthShell({ title, subtitle, children }: AuthShellProps) {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b bg-white text-black">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b bg-white text-black">
       <div className="pointer-events-none absolute inset-0 opacity-80">
         <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-[#22c55e]/20 blur-[140px]" />
         <div className="absolute left-1/2 top-32 h-80 w-80 -translate-x-1/2 rounded-full bg-[#38bdf8]/25 blur-[160px]" />
@@ -63,10 +63,10 @@ export default function AuthShell({ title, subtitle, children }: AuthShellProps)
         />
       </div>
 
-      <main className="relative z-10 flex min-h-screen items-center justify-center px-6 py-56">
-        <div className="space-y-8 rounded-2xl -translate-y-[-40px] border-2 border-orange-500 shadow-[0_20px_50px_rgba(0,0,0,0.35)] bg-transparent p-8">
-          <div className="flex flex-col -translate-y-[-40px] items-center gap-6 text-center">
-            <div className="items-center -translate-y-[120px] text-center">
+      <main className="relative z-10 flex min-h-screen items-center justify-center px-6 py-16">
+        <div className="w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20 backdrop-blur-xl md:p-8">
+          <div className="flex flex-col items-center gap-6 text-center">
+            <div className="items-center text-center">
 
               <img
                   src="/v.png"
@@ -75,7 +75,7 @@ export default function AuthShell({ title, subtitle, children }: AuthShellProps)
               />
 
               <img
-                  src="/ves.png"
+                  src="/v5.png"
                   alt="Velion Logo"
                   className="h-60 w-auto -translate-y-[60px]
 "
@@ -85,7 +85,8 @@ export default function AuthShell({ title, subtitle, children }: AuthShellProps)
 
 
           </div>
-          <div className="space-y-8 -translate-y-[150px] rounded-2xl border-2 border-orange-500 shadow-[0_20px_50px_rgba(0,0,0,0.35)] bg-transparent p-8">
+
+          <div className="mt-8 rounded-2xl border -translate-y-[120px] border-white/10 bg-white/5 p-6 text-left shadow-inner backdrop-blur-lg md:p-8">
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#f97316]">
                 {title}
