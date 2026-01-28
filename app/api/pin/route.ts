@@ -5,7 +5,7 @@ import crypto from "crypto";
 const COOKIE_NAME = "restaurantcards_pin";
 const COOKIE_MAX_AGE = 60 * 60 * 12; // 12h
 const DEFAULT_PIN_HASH =
-  "$2a$10$oAujfd/toB9x4JG8OD/XKOzdD7Nqj/k3ihrWgAy02MmnCUPY5tKtu";
+  "$2b$10$752INmFNOOHBoyDs45QJJe88MX6wXfZp1nIVNvGP0aN.zyTNgoDNG";
 const DEFAULT_PIN_COOKIE_SECRET =
   "GxQ6oQy7h8C2vYz4N4n6a9LZb2P2y9R1e5pVdHcYxM0";
 
