@@ -86,8 +86,8 @@ function buildClearCookie() {
 }
 
 export async function POST(request: Request) {
-  const hash = process.env.PIN_HASH ?? DEFAULT_PIN_HASH;
-  const secret = process.env.PIN_COOKIE_SECRET ?? DEFAULT_PIN_COOKIE_SECRET;
+  const hash = DEFAULT_PIN_HASH;
+  const secret = DEFAULT_PIN_COOKIE_SECRET;
 
   // lê PIN do body
   let pin = "";
