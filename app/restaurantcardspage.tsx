@@ -61,12 +61,21 @@ type Employee = {
 // Helpers
 // --------------------
 function readCookie(name: string) {
+  if (typeof document === "undefined") return null;
   const v = document.cookie
     .split("; ")
     .find((c) => c.startsWith(`${name}=`))
     ?.split("=")[1];
   return v ?? null;
 }
+
+// ...
+const [installId, setInstallId] = useState("");
+
+useEffect(() => {
+  setInstallId(readCookie("installId") || "");
+}, []);
+
 
 function normalizeKey(value: string) {
   return String(value ?? "")
@@ -272,44 +281,40 @@ export default function EmployeesPage() {
     return readCookie("3436985B-C01A-4318-9345-9C92316F3101") || "";
   }, []);
 
-  useEffect(() => {
-    let isMounted = true;
+ useEffect(() => {
+  let isMounted = true;
 
-    async function load() {
-      try {
-        setLoading(true);
-        setError("");
+  async function load() {
+    try {
+      setLoading(true);
+      setError("");
 
-        if (!hasFirebaseConfig) {
-          setError(
-            "Firebase config is missing. Check .env.local (NEXT_PUBLIC_FIREBASE_*) and restart `npm run dev`."
-          );
-          return;
-        }
-
-        if (!installId) {
-          setError(
-            "Missing installId cookie. Set cookie `installId=<DOC_ID>` from installids/{installId}."
-          );
-          return;
-        }
-
-        const items = await getEmployees(installId);
-        if (isMounted) setEmployees(items);
-      } catch (e: any) {
-        console.error("[EmployeesPage] load failed:", e);
-        setError(e?.message ? String(e.message) : "Failed to load employees.");
-      } finally {
-        if (isMounted) setLoading(false);
+      if (!hasFirebaseConfig) {
+        setError("Firebase config missing.");
+        return;
       }
+
+      if (!installId) {
+        setError("Missing installId cookie.");
+        return;
+      }
+
+      const items = await getEmployees(installId);
+      if (isMounted) setEmployees(items);
+    } catch (e: any) {
+      setError(e?.message ? String(e.message) : "Failed to load employees.");
+    } finally {
+      if (isMounted) setLoading(false);
     }
+  }
 
-    if (hasAccess) load();
+  if (hasAccess && installId) load();
 
-    return () => {
-      isMounted = false;
-    };
-  }, [hasAccess, installId]);
+  return () => {
+    isMounted = false;
+  };
+}, [hasAccess, installId]);
+
 
   if (!authReady || !pinCheckReady) {
     return (
